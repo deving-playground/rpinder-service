@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: rpinder-service
+  profiles:
+    active: local
+  thymeleaf:
+    enabled: true
+    mode: HTML
+    suffix: .html
+    prefix: classpath:templates/
+    check-template-location: true
+    cache: false
+    encoding: UTF-8
+
+app:
+  elasticsearch:
+    host:
+      - loaclhost:9200
+    indcies:
+      index: ring-price
+      type: _doc
+
+---
+spring:
+  profiles: local
+
+app:
+  elasticsearch:
+    host:
+      - loaclhost:9200
+
+
+---
+spring:
+  profiles: develop
+
+app:
+  elasticsearch:
+    host:
+      - develop-host:9200
+
+
+---
+spring:
+  profiles: production
+
+app:
+  elasticsearch:
+    host:
+      - production-host:9200
